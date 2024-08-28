@@ -17,11 +17,8 @@ class RandomWord
       if random_word.length.nil?
         select_random_word
       elsif random_word.length > 4 && random_word.length <= 12
-        puts "#{random_word}#{random_index}"
-        return random_word
+        return puts random_word
       end
     end
   end
 end
-
-word = RandomWord.new
