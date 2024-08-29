@@ -69,5 +69,3 @@ class Board
     puts board_bottom
   end
 end
-
-show = Board.new
