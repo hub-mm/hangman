@@ -11,5 +11,3 @@ class PlayerGuess
     gets.chomp.downcase
   end
 end
-
-word = PlayerGuess.new
