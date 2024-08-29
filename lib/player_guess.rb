@@ -7,7 +7,7 @@ class PlayerGuess
   end
 
   def player_guess
-    print 'Input word: '
+    print 'Input letter: '
     gets.chomp.downcase
   end
 end
