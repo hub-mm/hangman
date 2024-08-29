@@ -4,7 +4,7 @@
 class RandomWord
   def initialize
     @random_word_file = File.readlines('google-10000-english-no-swears.txt')
-    @random_word = select_random_word
+    # @random_word = select_random_word
   end
 
   def select_random_word
@@ -17,7 +17,10 @@ class RandomWord
       if random_word.length.nil?
         select_random_word
       elsif random_word.length > 4 && random_word.length <= 12
-        return puts random_word
+
+        puts "#{random_word}"
+
+        return random_word
       end
     end
   end
