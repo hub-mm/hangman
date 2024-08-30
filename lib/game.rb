@@ -74,13 +74,10 @@ class Game
 
   def game_over?(word, random_word)
     if !word.split('').include?('_')
-      puts "\nCongratulations! You guessed the word: #{random_word}\n\n".green
+      puts "\nCongratulations! You guessed the word: #{random_word}\n".green
       exit
     else
       false
     end
   end
 end
-
-play = Game.new
-play.play_game
