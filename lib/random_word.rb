@@ -16,7 +16,6 @@ class RandomWord
       if random_word.length.nil?
         select_random_word
       elsif random_word.length > 4 && random_word.length <= 12
-        puts "#{random_word}"
         return random_word
       end
     end
