@@ -5,8 +5,12 @@ require_relative 'random_word'
 require_relative 'player_guess'
 
 class UpdateGame
+  attr_reader :wrong_guess
+
   def initialize
     @wrong_guess = 0
+    @included = nil
+    @blank_array = nil
   end
 
   def random_word
@@ -17,34 +21,45 @@ class UpdateGame
     @player_guess = PlayerGuess.new.player_guess
   end
 
+  def correct_guess?
+    @included = if @random_word.include?(@player_guess)
+                  true
+                else
+                  false
+                end
+  end
+
   def blank_word
     word_length = @random_word.length
     Array.new(word_length - 1, '_')
   end
 
   def update_blank_word(blank_word)
-    word_array = @random_word.split('')
-    blank_array = blank_word
+    return blank_word if @included == false
 
-    word_array.each_with_index do |letter, index|
-      blank_array[index] = @player_guess if letter == @player_guess
+    @random_word.split('').each_with_index do |letter, index|
+      blank_word[index] = letter if letter == @player_guess
     end
 
-    puts "wrong guess: #{@wrong_guess}"
-    puts blank_array.join(' ')
+    @blank_array = blank_word
+  end
 
-    if !blank_array.include?('_')
-      puts "\nCongratulations! You've guessed the word: #{@random_word}"
-    else
-      player_guess
-      @wrong_guess += 1 unless @random_word.include?(@player_guess.to_s)
-      update_blank_word(blank_array)
-    end
+  def new_guess
+    update_blank_word(@blank_array)
+  end
+
+  def wrong
+    @wrong_guess += 1 if @included == false
+    # puts "Wrong guess: #{@wrong_guess}"
+    @wrong_guess
   end
 end
 
-check = UpdateGame.new
-check.random_word
+# check = UpdateGame.new
+# check.random_word
 # check.player_guess
-blank = check.blank_word
-check.update_blank_word(blank)
+# check.correct_guess?
+# blank = check.blank_word
+# check.update_blank_word(blank)
+# check.new_guess
+# puts check.wrong
