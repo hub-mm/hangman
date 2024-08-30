@@ -36,7 +36,7 @@ class Game
       puts "\nWrong guess: #{wrong}/12\n\n"
     end
 
-    puts "You lost! Better luck next time. The word was: #{random_word}\n".red
+    puts "You lost! Better luck next time. The word was: #{random_word}\n".red.bold
   end
 
   def update_display(wrong)
@@ -74,7 +74,7 @@ class Game
 
   def game_over?(word, random_word)
     if !word.split('').include?('_')
-      puts "\nCongratulations! You guessed the word: #{random_word}\n".green
+      puts "\nCongratulations! You guessed the word: #{random_word}\n".green.bold
       exit
     else
       false
