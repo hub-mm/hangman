@@ -1,6 +1,9 @@
 # board.rb
 # frozen_string_literal: false
 
+require 'rainbow/refinement'
+using Rainbow
+
 class Board
   def board_top
     '___________'
@@ -55,151 +58,150 @@ class Board
   end
 
   def display_bottom
-    puts board_bottom
+    puts board_bottom.red
   end
 
   def display_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_bottom
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_bottom.red
   end
 
   def display_top
-    puts board_top
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_bottom
+    puts board_top.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_bottom.red
   end
 
   def display_rope
-    puts board_top
-    puts board_column << board_rope
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_bottom
+    puts board_top.red
+    puts board_column.red << board_rope.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_bottom.red
   end
 
   def display_head
-    puts board_top
-    puts board_column << board_rope
-    puts board_column << board_head
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_bottom
+    puts board_top.red
+    puts board_column.red << board_rope.red.red
+    puts board_column.red << board_head.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_bottom.red
   end
 
   def display_shoulders
-    puts board_top
-    puts board_column << board_rope
-    puts board_column << board_head
-    puts board_column << board_shoulders
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_bottom
+    puts board_top.red
+    puts board_column.red << board_rope.red.red
+    puts board_column.red << board_head.red
+    puts board_column.red << board_shoulders.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_column.red
+    puts board_bottom.red
   end
 
   def display_chest
-    puts board_top
-    puts board_column << board_rope
-    puts board_column << board_head
-    puts board_column << board_shoulders
-    print board_column
-    puts board_chest_top
-    puts board_column << board_chest_bottom
-    puts board_column
-    puts board_column
-    puts board_bottom
+    puts board_top.red
+    puts board_column.red << board_rope.red
+    puts board_column.red << board_head.red
+    puts board_column.red << board_shoulders.red
+    print board_column.red
+    puts board_chest_top.red
+    puts board_column.red << board_chest_bottom.red
+    puts board_column.red
+    puts board_column.red
+    puts board_bottom.red
   end
 
   def display_arm_left
-    puts board_top
-    puts board_column << board_rope
-    puts board_column << board_head
-    puts board_column << board_shoulders
-    print board_column << board_arm_left
-    puts board_chest_top.delete(' ')
-    puts board_column << board_chest_bottom
-    puts board_column
-    puts board_column
-    puts board_column
-    puts board_bottom
+    puts board_top.red
+    puts board_column.red << board_rope.red
+    puts board_column.red << board_head.red
+    puts board_column.red << board_shoulders.red
+    print board_column.red << board_arm_left.red
+    puts board_chest_top.delete(' ').red
+    puts board_column.red << board_chest_bottom.red
+    puts board_column.red
+    puts board_column.red
+    puts board_bottom.red
   end
 
   def display_arm_right
-    puts board_top
-    puts board_column << board_rope
-    puts board_column << board_head
-    puts board_column << board_shoulders
-    print board_column << board_arm_left
-    print board_chest_top.delete(' ')
-    puts board_arm_right
-    puts board_column << board_chest_bottom
-    puts board_column
-    puts board_column
-    puts board_bottom
+    puts board_top.red
+    puts board_column.red << board_rope.red
+    puts board_column.red << board_head.red
+    puts board_column.red << board_shoulders.red
+    print board_column.red << board_arm_left.red
+    print board_chest_top.delete(' ').red
+    puts board_arm_right.red
+    puts board_column.red << board_chest_bottom.red
+    puts board_column.red
+    puts board_column.red
+    puts board_bottom.red
   end
 
   def display_leg_left
-    puts board_top
-    puts board_column << board_rope
-    puts board_column << board_head
-    puts board_column << board_shoulders
-    print board_column << board_arm_left
-    print board_chest_top.delete(' ')
-    puts board_arm_right
-    puts board_column << board_chest_bottom
-    puts board_column << board_leg_left
-    puts board_column
-    puts board_bottom
+    puts board_top.red
+    puts board_column.red << board_rope.red
+    puts board_column.red << board_head.red
+    puts board_column.red << board_shoulders.red
+    print board_column.red << board_arm_left.red
+    print board_chest_top.delete(' ').red
+    puts board_arm_right.red
+    puts board_column.red << board_chest_bottom.red
+    puts board_column.red << board_leg_left.red
+    puts board_column.red
+    puts board_bottom.red
   end
 
   def display_leg_right
-    puts board_top
-    puts board_column << board_rope
-    puts board_column << board_head
-    puts board_column << board_shoulders
-    print board_column << board_arm_left
-    print board_chest_top.delete(' ')
-    puts board_arm_right
-    puts board_column << board_chest_bottom
-    print board_column << board_leg_left
-    puts board_leg_right
-    puts board_column
-    puts board_bottom
+    puts board_top.red
+    puts board_column.red << board_rope.red
+    puts board_column.red << board_head.red
+    puts board_column.red << board_shoulders.red
+    print board_column.red << board_arm_left.red
+    print board_chest_top.delete(' ').red
+    puts board_arm_right.red
+    puts board_column.red << board_chest_bottom.red
+    print board_column.red << board_leg_left.red
+    puts board_leg_right.red
+    puts board_column.red
+    puts board_bottom.red
   end
 
   def display_game_over
-    puts board_top
-    puts board_column << board_rope
-    puts board_column << board_head_x
-    puts board_column << board_shoulders
-    print board_column << board_arm_left
-    print board_chest_top.delete(' ')
-    puts board_arm_right
-    puts board_column << board_chest_bottom
-    print board_column << board_leg_left
-    puts board_leg_right
-    puts board_column
-    puts board_bottom
+    puts board_top.red
+    puts board_column.red << board_rope.red
+    puts board_column.red << board_head_x.red
+    puts board_column.red << board_shoulders.red
+    print board_column.red << board_arm_left.red
+    print board_chest_top.delete(' ').red
+    puts board_arm_right.red
+    puts board_column.red << board_chest_bottom.red
+    print board_column.red << board_leg_left.red
+    puts board_leg_right.red
+    puts board_column.red
+    puts board_bottom.red
   end
 end
 
