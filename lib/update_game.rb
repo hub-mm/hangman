@@ -5,6 +5,10 @@ require_relative 'random_word'
 require_relative 'player_guess'
 
 class UpdateGame
+  def initialize
+    @wrong_guess = 0
+  end
+
   def random_word
     @random_word = RandomWord.new.select_random_word
   end
@@ -18,25 +22,29 @@ class UpdateGame
     Array.new(word_length - 1, '_')
   end
 
-  def update_blank_word
+  def update_blank_word(blank_word)
     word_array = @random_word.split('')
     blank_array = blank_word
-    index_array = []
 
     word_array.each_with_index do |letter, index|
-      index_array << index if @player_guess == letter
+      blank_array[index] = @player_guess if letter == @player_guess
     end
 
-    index_array.each do |num|
-      blank_array[num] = @player_guess
-    end
+    puts "wrong guess: #{@wrong_guess}"
+    puts blank_array.join(' ')
 
-    blank_array = blank_array.join
+    if !blank_array.include?('_')
+      puts "\nCongratulations! You've guessed the word: #{@random_word}"
+    else
+      player_guess
+      @wrong_guess += 1 unless @random_word.include?(@player_guess.to_s)
+      update_blank_word(blank_array)
+    end
   end
 end
 
 check = UpdateGame.new
 check.random_word
-check.player_guess
-check.blank_word
-puts check.update_blank_word
+# check.player_guess
+blank = check.blank_word
+check.update_blank_word(blank)

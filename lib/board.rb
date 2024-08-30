@@ -204,16 +204,16 @@ class Board
 end
 
 # Test/Troubleshoot
-show = Board.new
-show.display_bottom
-show.display_column
-show.display_top
-show.display_rope
-show.display_head
-show.display_shoulders
-show.display_chest
-show.display_arm_left
-show.display_arm_right
-show.display_leg_left
-show.display_leg_right
-show.display_game_over
+# show = Board.new
+# show.display_bottom
+# show.display_column
+# show.display_top
+# show.display_rope
+# show.display_head
+# show.display_shoulders
+# show.display_chest
+# show.display_arm_left
+# show.display_arm_right
+# show.display_leg_left
+# show.display_leg_right
+# show.display_game_over
