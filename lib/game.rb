@@ -4,25 +4,39 @@
 require_relative 'board'
 require_relative 'update_game'
 
+require 'rainbow'
+using Rainbow
+
 class Game
   def initialize
     @update_game = UpdateGame.new
     @board = Board.new
+    @used = []
   end
 
   def play_game
-    @update_game.random_word
+    random_word = @update_game.random_word
     blank = @update_game.blank_word
+    puts "\n#{blank.join(' ')}\n\n"
 
     while @update_game.wrong_guess < 12
-      @update_game.player_guess
-      puts @update_game.update_blank_word(blank).join(' ')
+      letter = @update_game.player_guess
+      used = used_letters(letter)
+      puts "Used letters: #{used.join(', ').blue}"
       @update_game.correct_guess?
-      @update_game.new_guess
+
+      word = @update_game.update_blank_word(blank).join(' ')
+      puts "\n#{word}\n\n"
+
       wrong = @update_game.wrong
-      puts "Wrong guess: #{wrong}"
+      @update_game.new_guess
       update_display(wrong)
+
+      game_over?(word, random_word)
+      puts "\nWrong guess: #{wrong}/12\n\n"
     end
+
+    puts "You lost! Better luck next time. The word was: #{random_word}\n".red
   end
 
   def update_display(wrong)
@@ -51,6 +65,19 @@ class Game
       @board.display_leg_right
     when 12
       @board.display_game_over
+    end
+  end
+
+  def used_letters(letter)
+    @used << letter
+  end
+
+  def game_over?(word, random_word)
+    if !word.split('').include?('_')
+      puts "\nCongratulations! You guessed the word: #{random_word}\n\n".green
+      exit
+    else
+      false
     end
   end
 end
