@@ -50,16 +50,6 @@ class UpdateGame
 
   def wrong
     @wrong_guess += 1 if @included == false
-    # puts "Wrong guess: #{@wrong_guess}"
     @wrong_guess
   end
 end
-
-# check = UpdateGame.new
-# check.random_word
-# check.player_guess
-# check.correct_guess?
-# blank = check.blank_word
-# check.update_blank_word(blank)
-# check.new_guess
-# puts check.wrong
