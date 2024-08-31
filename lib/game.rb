@@ -26,6 +26,17 @@ class Game
     while @update_game.wrong_guess < 12
       letter = @update_game.player_guess
 
+      used = used_letters(letter)
+      puts "Used letters: #{used.join(', ').blue}"
+      @update_game.correct_guess?
+
+      blank = @update_game.update_blank_word(blank)
+      puts "\n#{blank.join(' ')}\n\n"
+
+      wrong = @update_game.wrong unless letter.length > 2
+      @update_game.new_guess
+      update_display(wrong)
+
       if letter == 'savegame'
         save_game
         next
@@ -34,17 +45,6 @@ class Game
         blank = @update_game.instance_variable_get(:@blank_array)
         next
       end
-
-      used = used_letters(letter)
-      puts "Used letters: #{used.join(', ').blue}"
-      @update_game.correct_guess?
-
-      blank = @update_game.update_blank_word(blank)
-      puts "\n#{blank.join(' ')}\n\n"
-
-      wrong = @update_game.wrong
-      @update_game.new_guess
-      update_display(wrong)
 
       game_over?(blank.join(' '), @update_game.instance_variable_get(:@random_word))
       puts "\nWrong guess: #{wrong}/12\n\n"
