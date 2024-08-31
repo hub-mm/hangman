@@ -8,6 +8,8 @@ require_relative 'update_game'
 require 'rainbow'
 using Rainbow
 
+# Class setup to take care of game logic and game flow.
+# rubocop: disable Metrics/ClassLength
 class Game
   def initialize
     @update_game = UpdateGame.new
@@ -15,8 +17,9 @@ class Game
     @used = []
   end
 
+  # rubocop: disable Metrics
   def play_game
-    random_word = @update_game.random_word
+    @update_game.random_word
     load_game if prompt_load_game
 
     blank = @update_game.instance_variable_get(:@blank_array) || @update_game.blank_word
@@ -50,9 +53,13 @@ class Game
       puts "\nWrong guess: #{wrong}/12\n\n"
     end
 
+    # rubocop: disable Layout/LineLength
     puts "You lost! Better luck next time. The word was: #{@update_game.instance_variable_get(:@random_word)}\n".red.bold
+    # rubocop: enable Layout/LineLength
   end
+  # rubocop: enable Metrics
 
+  # rubocop: disable Metrics
   def update_display(wrong)
     case wrong
     when 1
@@ -81,6 +88,7 @@ class Game
       @board.display_game_over
     end
   end
+  # rubocop: enable Metrics
 
   def used_letters(letter)
     @used << letter
@@ -95,6 +103,7 @@ class Game
     end
   end
 
+  # rubocop: disable Metric/MethodLength
   def save_game
     data = {
       update_game: {
@@ -114,6 +123,7 @@ class Game
     puts "\nGame saved succesfully!\n".green
   end
 
+  # rubocop: disable Metric/AbcSize
   def load_game
     if File.exist?('savegame.json')
       data = JSON.parse(File.read('savegame.json'))
@@ -139,6 +149,7 @@ class Game
       puts "\nNo saved game found.\n".red
     end
   end
+  # rubocop: enable all
 
   def prompt_load_game
     print "\nDo you want to load the previous game? (y/n): "

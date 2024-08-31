@@ -4,6 +4,8 @@
 require 'rainbow/refinement'
 using Rainbow
 
+# Class setup to generate hangman display.
+# rubocop: disable Metrics/ClassLength
 class Board
   def board_top
     '___________'
@@ -61,6 +63,7 @@ class Board
     puts board_bottom.red
   end
 
+  # rubocop: disable Metrics
   def display_column
     puts board_column.red
     puts board_column.red
@@ -203,4 +206,6 @@ class Board
     puts board_column.red
     puts board_bottom.red
   end
+  # rubocop: enable Metrics
 end
+# rubocop: enable Metrics/ClassLength

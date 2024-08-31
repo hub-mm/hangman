@@ -1,7 +1,9 @@
 # player_guess.rb
 # frozen_string_literal: true
 
+# Class setup to take care and manage player input.
 class PlayerGuess
+  # rubocop: disable Metrics/MethodLength
   def player_guess
     print 'Input letter: '
     input = gets.chomp.downcase.delete('^a-zA-Z')
@@ -18,4 +20,5 @@ class PlayerGuess
       input
     end
   end
+  # rubocop: enable Metrics/MethodLength
 end

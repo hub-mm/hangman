@@ -4,6 +4,7 @@
 require_relative 'random_word'
 require_relative 'player_guess'
 
+# Class setup to update neccesary info for game and avoid crowding game class.
 class UpdateGame
   attr_reader :wrong_guess
 

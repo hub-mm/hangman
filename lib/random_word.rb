@@ -1,6 +1,7 @@
 # random_word.rb
 # frozen_string_literal: true
 
+# Class setup to generate random word from .txt file.
 class RandomWord
   def initialize
     @random_word_file = File.readlines('google-10000-english-no-swears.txt')
