@@ -9,6 +9,8 @@ class PlayerGuess
     if input == 'exitgame'
       puts "\nThank you for playing!\n\n"
       exit
+    elsif %w[savegame loadgame].include?(input)
+      input
     elsif input.length > 1
       puts "\nInput should be one letter. Please try again.\n\n"
       player_guess
