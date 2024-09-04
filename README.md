@@ -17,7 +17,7 @@ Clone repository:
  git clone git@github.com:hub-mm/hangman.git
  ```
 
- Then navigate to the folder through the command lines with:
+ Then navigate to the folder through the command line with:
  ```
  cd hangman
  ```
