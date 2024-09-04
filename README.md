@@ -16,9 +16,15 @@ Clone repository:
 ```
  git clone git@github.com:hub-mm/hangman.git
  ```
- 
-Start game:
-> ruby main.rb
 
+ Then navigate to the folder through the command lines with:
+ ```
+ cd hangman
+ ```
+
+Start game:
+```
+ruby main.rb
+```
 Hope you enjoy!
 
