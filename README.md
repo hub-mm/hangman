@@ -13,8 +13,10 @@ Input one letter at a time unless wanting to perform any operation listed above.
 Gems needed are available in Gemfile (rubocop and rainbow are used).
 
 Clone repository:
-> git@github.com:hub-mm/hangman.git
-
+```
+ git clone git@github.com:hub-mm/hangman.git
+ ```
+ 
 Start game:
 > ruby main.rb
 
